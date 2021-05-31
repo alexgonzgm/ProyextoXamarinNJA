@@ -29,10 +29,12 @@ namespace ProyextoXamarinNJA.ViewModels
         {
             List<Coche> lista = new List<Coche>
             {
-                new Coche{Año = 1551 , IdCoche = 1 , IdUsuario=1 , Kilometros=55555,Marca="Ford" , Modelo="laguna"},
-                new Coche{Año = 1551 , IdCoche = 2 , IdUsuario=1 , Kilometros=44444,Marca="Peugeot" , Modelo="laguna"},
-                new Coche{Año = 1551 , IdCoche = 3 , IdUsuario=1 , Kilometros=51945,Marca="Renaul" , Modelo="laguna"},
-                new Coche{Año = 1551 , IdCoche = 4 , IdUsuario=1 , Kilometros=21649,Marca="Ferrari" , Modelo="laguna"}
+                new Coche{Año = 1551 , IdCoche = 1 , IdUsuario=1 , Kilometros=55555,
+                    Marca="Opel" , Modelo="Astra", Imagen = "Opel.png"},
+                new Coche{Año = 1551 , IdCoche = 2 , IdUsuario=1 , Kilometros=44444,
+                    Marca="Seat" , Modelo="Ibiza", Imagen = "Ford.png"},
+                new Coche{Año = 1551 , IdCoche = 3 , IdUsuario=1 , Kilometros=51945,
+                    Marca="Toyota" , Modelo="Corolla", Imagen = "Ferrari.png"}
             };
             this.Coches = new ObservableCollection<Coche>(lista);
         }

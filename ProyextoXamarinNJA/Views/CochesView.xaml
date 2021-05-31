@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyextoXamarinNJA.Views.CochesView"
              xmlns:viewmodels="clr-namespace:ProyextoXamarinNJA.ViewModels">
+    
     <ContentPage.Content>
         <StackLayout>
             <StackLayout.BindingContext>
@@ -12,16 +13,15 @@
                     HeightRequest="35"
                     TextColor="#B4995D" 
                     BackgroundColor="White"/>
-
-            <ListView>
+            <ListView ItemsSource="{Binding Coches}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" HeightRequest="150">
                                 <Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50" />
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Marca}" FontSize="15" TextColor="#B4995D"/>
-                                    <Label Text="{Binding Modelo}" FontSize="15" TextColor="#B4995D"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D"/>
+                                    <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D"/>
                                 </StackLayout>
                             </StackLayout> 
                         </ViewCell>

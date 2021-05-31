@@ -14,5 +14,6 @@ namespace ProyextoXamarinNJA.Models
         public int Kilometros { get; set; }
         public String Motor { get; set; }
         public int IdUsuario { get; set; }
+        public string Imagen { get; set; }
     }
 }
