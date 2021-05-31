@@ -11,7 +11,7 @@ namespace ProyextoXamarinNJA
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new CochesView();
         }
 
         protected override void OnStart()
