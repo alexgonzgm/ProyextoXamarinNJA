@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyextoXamarinNJA.Views.CochesView"
-             xmlns:viewmodels="clr-namespace:ProyextoXamarinNJA.ViewModels">
+             xmlns:local="clr-namespace:ProyextoXamarinNJA"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=CochesViewModel}"
+             x:Name="PageCochesView">
     
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout.BindingContext>
+            <!--<StackLayout.BindingContext>
                 <viewmodels:CochesViewModel/>
-            </StackLayout.BindingContext>
+            </StackLayout.BindingContext>-->
             <Button Text="+ Añadir un nuevo vehículo" 
                     HeightRequest="35"
                     TextColor="#B4995D" 
@@ -17,13 +19,13 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" HeightRequest="150">
-                                <Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50" />
+                            <!--<StackLayout Orientation="Horizontal" HeightRequest="150">-->
+                                <!--<Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50" />-->
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D"/>
                                     <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D"/>
                                 </StackLayout>
-                            </StackLayout> 
+                            <!--</StackLayout>--> 
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -14,27 +14,35 @@ namespace ProyextoXamarinNJA.Services
         private String url;
         public ServiceCoches()
         {
-            this.url = "https://sqltajamarjrm.database.windows.net/";
+            this.url = "https://localhost:44371/";
         }
 
-        //public async Task<List<Coche>> GetCochesAsync()
-        //{
-        //    //String request = "webresources/coches";
-        //    Uri uri = new Uri(this.url + request);
-        //    HttpClient client = new HttpClient();
-        //    client.DefaultRequestHeaders.Accept.Clear();
-        //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //    HttpResponseMessage response = await client.GetAsync(uri);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        String data = await response.Content.ReadAsStringAsync();
-        //        List<Coche> coches = JsonConvert.DeserializeObject<List<Coche>>(data);
-        //        return coches;
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
+        public async Task<T> CallApiAsync<T>(String request)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(this.url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = await client.GetAsync(request);
+                if (response.IsSuccessStatusCode)
+                {
+                    String json = await response.Content.ReadAsStringAsync();
+                    T data = JsonConvert.DeserializeObject<T>(json);
+                    return data;
+                }
+                else
+                {
+                    return default(T);
+                }
+            }
+        }
+
+        public async Task<List<Coche>> GetCochesAsync(int id)
+        {
+            String request = "api/Coches/GetCoches/" + id;
+            List<Coche> coches = await this.CallApiAsync<List<Coche>>(request);
+            return coches;
+        }
     }
 }
