@@ -11,7 +11,7 @@
                     <Image Source="bg.png" Aspect="AspectFill" />
                     <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Image  Source="tiendaReparacion.png" Aspect="AspectFill" WidthRequest="85" HeightRequest="85" />
-                        <Label Text="Taller NJA" TextColor="White" FontSize="Large" />
+                        <Label Text="Taller NJA" TextColor="White" FontSize="Large"  />
                     </StackLayout>
                 </Grid>
                 <StackLayout Margin="0,0,0,0" Grid.Row="1" Spacing="20">

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyextoXamarinNJA.Views.ForoView"
+             xmlns:viewmodels="clr-namespace:ProyextoXamarinNJA.ViewModels">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <StackLayout.BindingContext>                <viewmodels:ForoViewmModel/>            </StackLayout.BindingContext>
+            <Label Text="Foro de la comunidad"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                   FontSize="20"
+                   TextColor="#B4974D" />
+            <ListView ItemsSource="{Binding Foro}"
+                      VerticalOptions="Start" 
+                      BackgroundColor="#B4974D" SeparatorColor="Beige" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal" Padding="5,0,0,0">
+                                <Image Source="Reparacion.png" HorizontalOptions="Start"/>
+                                
+                                <Image Source="{Binding Marca}" Margin="0,0,40,0"></Image>
+                                <Label Text="{Binding Asunto}" FontSize="15" TextColor="Beige"/>
+                                <Label Text="{Binding Modelo}" FontSize="15" TextColor="Beige"/>
+                                <Button Text="ir al foro" Margin="40,0,0,0"></Button>
+
+                            </StackLayout>
+                           
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

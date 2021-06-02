@@ -44,7 +44,7 @@ namespace ProyextoXamarinNJA
             {
                 Title = "Foro",
                 Icon = "foro.png",
-                TargetType = typeof(CochesView)
+                TargetType = typeof(ForoView)
             });
             menuList.Add(new MasterPageItem()
             {
