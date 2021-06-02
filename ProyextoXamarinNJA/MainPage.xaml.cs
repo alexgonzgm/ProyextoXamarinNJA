@@ -42,6 +42,12 @@ namespace ProyextoXamarinNJA
             });
             menuList.Add(new MasterPageItem()
             {
+                Title = "Foro",
+                Icon = "foro.png",
+                TargetType = typeof(CochesView)
+            });
+            menuList.Add(new MasterPageItem()
+            {
                 Title = "Logout",
                 Icon = "logout.png",
                 TargetType = typeof(CochesView)
