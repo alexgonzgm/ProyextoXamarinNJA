@@ -14,18 +14,39 @@
             <Button Text="+ Añadir un nuevo vehículo" 
                     HeightRequest="35"
                     TextColor="#B4995D" 
-                    BackgroundColor="White"/>
+                    BackgroundColor="White"
+                    Clicked="ShowNewCochePopup"/>
             <ListView ItemsSource="{Binding Coches}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <!--<StackLayout Orientation="Horizontal" HeightRequest="150">-->
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Editar"
+                                                   IconImageSource="https://e7.pngegg.com/pngimages/740/67/png-clipart-computer-icons-icon-design-edit-angle-computer.png"
+                                                   BackgroundColor="Green"
+                                                   Command="{Binding BindingContext.EditarCoche, Source={x:Reference StackDoctores}}"
+                                                   CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Editar"
+                                                   IconImageSource="https://w7.pngwing.com/pngs/767/680/png-transparent-computer-icons-corbeille-a-papier-trash-symbol-miscellaneous-text-rectangle.png"
+                                                   BackgroundColor="Red"
+                                                   Command="{Binding BindingContext.EliminarCoche, Source={x:Reference PageCochesView}}"
+                                                   CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <!--<StackLayout Orientation="Horizontal" HeightRequest="150">-->
                                 <!--<Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50" />-->
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D"/>
                                     <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D"/>
                                 </StackLayout>
-                            <!--</StackLayout>--> 
+                                <!--</StackLayout>-->
+                            </SwipeView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

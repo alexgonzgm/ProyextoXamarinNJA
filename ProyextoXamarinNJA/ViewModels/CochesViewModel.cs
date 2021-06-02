@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace ProyextoXamarinNJA.ViewModels
 {
@@ -53,5 +54,26 @@ namespace ProyextoXamarinNJA.ViewModels
         //    };
         //    this.Coches = new ObservableCollection<Coche>(lista);
         //}
+
+        public Command EditarCoche
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Has pulsado en editar", "OK");
+                });
+            }
+        }
+        public Command EliminarCoche
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Has pulsado en eliminar", "OK");
+                });
+            }
+        }
     }
 }
