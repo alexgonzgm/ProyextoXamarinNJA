@@ -25,16 +25,27 @@ namespace ProyextoXamarinNJA
             menuList.Add(new MasterPageItem()
             {
                 Title = "Home",
-                Icon = "homeicon.png",
+                Icon = "login.png",
                 TargetType = typeof(LoginPage)
             });
             menuList.Add(new MasterPageItem()
             {
-                Title = "Contact",
-                Icon = "contacticon.png",
+                Title = "Mi perfil",
+                Icon = "usuario.png",
                 TargetType = typeof(CochesView)
             });
-
+            menuList.Add(new MasterPageItem()
+            {
+                Title = "Mis coches",
+                Icon = "parking.png",
+                TargetType = typeof(CochesView)
+            });
+            menuList.Add(new MasterPageItem()
+            {
+                Title = "Logout",
+                Icon = "logout.png",
+                TargetType = typeof(CochesView)
+            });
             // Setting our list to be ItemSource for ListView in MainPage.xaml  
             navigationDrawerList.ItemsSource = menuList;
             // Initial navigation, this can be used for our home page  

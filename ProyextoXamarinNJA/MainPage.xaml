@@ -2,7 +2,7 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ProyextoXamarinNJA" x:Class="ProyextoXamarinNJA.MainPage">
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <Grid BackgroundColor="Transparent">
+            <Grid BackgroundColor="#B4974D" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200" />
                     <RowDefinition Height="*" />
@@ -10,12 +10,12 @@
                 <Grid>
                     <Image Source="bg.png" Aspect="AspectFill" />
                     <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Image  Source="profile.png" Aspect="AspectFill" WidthRequest="85" HeightRequest="85" />
-                        <Label Text="Adam Pedley" TextColor="White" FontSize="Large" />
+                        <Image  Source="tiendaReparacion.png" Aspect="AspectFill" WidthRequest="85" HeightRequest="85" />
+                        <Label Text="Taller NJA" TextColor="White" FontSize="Large" />
                     </StackLayout>
                 </Grid>
-                <StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
-                    <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="None" BackgroundColor="#e8e8e8" ItemSelected="OnMenuItemSelected">
+                <StackLayout Margin="0,0,0,0" Grid.Row="1" Spacing="20">
+                    <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="None" BackgroundColor="WhiteSmoke" ItemSelected="OnMenuItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
