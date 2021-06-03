@@ -93,12 +93,23 @@ namespace ProyextoXamarinNJA.ViewModels
         {
             get
             {
-                return new Command(async () =>
+
+                return new Command(async (coche) =>
                 {
-                    await Application.Current.MainPage.DisplayAlert("Alert", "Has pulsado en eliminar", "OK");
+                    Coche car = coche as Coche;
+
+                    await
+                    this.ServiceCoches.EliminarCocheAsync
+                    (car.IdCoche);
+                    MessagingCenter.Send
+                    (App.ServiceLocator.CochesViewModel, "RELOAD");
+                    await Application.Current.MainPage
+                    .Navigation.PopModalAsync();
                 });
+
             }
         }
+
 
         public Command show
         {
@@ -106,7 +117,7 @@ namespace ProyextoXamarinNJA.ViewModels
             {
                 return new Command(async () =>
                 {
-                  await  PopupNavigation.Instance.PushAsync(new NewCochePopupPage());
+                    await PopupNavigation.Instance.PushAsync(new NewCochePopupPage());
                 });
             }
         }

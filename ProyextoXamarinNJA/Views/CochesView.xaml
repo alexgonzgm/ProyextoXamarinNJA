@@ -48,8 +48,8 @@
                                 <!--<Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50" />-->
                                 <StackLayout Orientation="Horizontal" Padding="10,0,10,0">
                                     <Image Source="{Binding Marca}" WidthRequest="50"></Image>
-                                    <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D" HorizontalOptions="StartAndExpand" />
-                                    <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D" HorizontalOptions="EndAndExpand" />
+                                    <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D" HorizontalOptions="Start" Margin="0,0,20,0" />
+                                    <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D" HorizontalOptions="Start" />
                                     <!--<Button Text="Detalles" 
                                             HeightRequest="35"
                                             TextColor="#B4995D" 
