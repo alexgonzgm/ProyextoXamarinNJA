@@ -151,28 +151,28 @@ namespace ProyextoXamarinNJA.Services
         #region Foro
         public async Task<List<Foro>> GetForoAsync()
         {
-            String request = "api/Foro/GetForo";
+            String request = "api/Foros/GetForos";
             return await this.CallApi<List<Foro>>(request);
         }
 
         public async Task<List<Foro>> GetForoMarcaAsync(String filtro)
         {
-            String request = "api/Foro/GetForoMarca/" + filtro;
+            String request = "api/Foros/GetForoMarca/" + filtro;
             return await this.CallApi<List<Foro>>(request);
         }
         public async Task<Foro> BuscarForoAsync(int idforo)
         {
-            String request = "api/Foro/BuscarForo/" + idforo;
+            String request = "api/Foros/BuscarForo/" + idforo;
             return await this.CallApi<Foro>(request);
         }
         public async Task EliminarForoAsync(int idforo)
         {
-            String request = "api/Foro/" + idforo;
+            String request = "api/Foros/" + idforo;
             await this.DeleteApi(request);
         }
         public async Task InsertarForoAsync(int idforo, string marca, string modelo, string asunto, string contenido)
         {
-            String request = "api/Foro";
+            String request = "api/Foros";
             Foro foro = new Foro();
             foro.Marca = marca;
             foro.Modelo = modelo;
@@ -182,7 +182,7 @@ namespace ProyextoXamarinNJA.Services
         }
         public async Task ModificarForoAsync(int idforo, String marca, String modelo, String asunto, String contenido)
         {
-            String request = "api/Foro";
+            String request = "api/Foros";
             Foro foro = new Foro();
             foro.IdForo = idforo;
             foro.Marca = marca;
@@ -192,7 +192,6 @@ namespace ProyextoXamarinNJA.Services
             await this.PutApi<Foro>(request, foro);
         }
         #endregion
-
         #region Coche
         public async Task<List<Coche>> GetCocheAsync(int idusuario)
         {

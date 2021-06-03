@@ -28,14 +28,19 @@
                                                    BackgroundColor="Green"
                                                    Command="{Binding BindingContext.EditarCoche, Source={x:Reference PageCochesView}}"
                                                    CommandParameter="{Binding .}"/>
-                                    </SwipeItems>
-                                </SwipeView.LeftItems>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
                                         <SwipeItem Text="Eliminar"
                                                    IconImageSource="https://w7.pngwing.com/pngs/767/680/png-transparent-computer-icons-corbeille-a-papier-trash-symbol-miscellaneous-text-rectangle.png"
                                                    BackgroundColor="Red"
                                                    Command="{Binding BindingContext.EliminarCoche, Source={x:Reference PageCochesView}}"
+                                                   CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Detalles"
+                                                   IconImageSource="https://w7.pngwing.com/pngs/767/680/png-transparent-computer-icons-corbeille-a-papier-trash-symbol-miscellaneous-text-rectangle.png"
+                                                   BackgroundColor="Blue"
+                                                   Command="{Binding BindingContext.DetallesCoche, Source={x:Reference PageCochesView}}"
                                                    CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.RightItems>

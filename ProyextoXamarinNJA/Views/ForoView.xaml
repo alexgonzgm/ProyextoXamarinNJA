@@ -3,11 +3,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyextoXamarinNJA.Views.ForoView"
-             xmlns:viewmodels="clr-namespace:ProyextoXamarinNJA.ViewModels">
+             xmlns:viewmodels="clr-namespace:ProyextoXamarinNJA.ViewModels"
+            xmlns:local="clr-namespace:ProyextoXamarinNJA"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ForoViewmModel}">
     <ContentPage.Content>
 
         <StackLayout>
-            <StackLayout.BindingContext>                <viewmodels:ForoViewmModel/>            </StackLayout.BindingContext>
+            
+
             <Label Text="Foro de la comunidad"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand"
