@@ -16,7 +16,7 @@
                     TextColor="#B4995D" 
                     BackgroundColor="White"
                    Command="{Binding show }"></Button>
-            <ListView ItemsSource="{Binding Coches}"  >
+            <ListView ItemsSource="{Binding Coches}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -32,7 +32,7 @@
                                 </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
-                                        <SwipeItem Text="Editar"
+                                        <SwipeItem Text="Eliminar"
                                                    IconImageSource="https://w7.pngwing.com/pngs/767/680/png-transparent-computer-icons-corbeille-a-papier-trash-symbol-miscellaneous-text-rectangle.png"
                                                    BackgroundColor="Red"
                                                    Command="{Binding BindingContext.EliminarCoche, Source={x:Reference PageCochesView}}"
@@ -41,15 +41,16 @@
                                 </SwipeView.RightItems>
                                 <!--<StackLayout Orientation="Horizontal" HeightRequest="150">-->
                                 <!--<Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50" />-->
-                                <StackLayout Orientation="Horizontal" Padding="10,0,10,0" >
+                                <StackLayout Orientation="Horizontal" Padding="10,0,10,0">
                                     <Image Source="{Binding Marca}" WidthRequest="50"></Image>
                                     <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D" HorizontalOptions="CenterAndExpand" />
                                     <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D" HorizontalOptions="StartAndExpand" />
                                     <Button Text="Detalles" 
                                             HeightRequest="35"
                                             TextColor="#B4995D" 
-                                            Clicked="ShowNewCochePopup"
-                                          HorizontalOptions="EndAndExpand"/>           
+                                            CommandParameter="{Binding .}"
+                                            Command="{Binding BindingContext.MostrarDetalles, Source={x:Reference PageCochesView}}"
+                                            HorizontalOptions="EndAndExpand"/>           
                                 </StackLayout>
                                 <!--</StackLayout>-->
                             </SwipeView>

@@ -49,6 +49,22 @@ namespace ProyextoXamarinNJA.ViewModels
             this.Coches = new ObservableCollection<Coche>(lista);
         }
 
+        public Command MostrarDetalles
+        {
+            get
+            {
+                return new Command(async (car) =>
+                {
+                    Coche coche = car as Coche;
+                    CocheViewModel viewmodel = App.ServiceLocator.CocheViewModel;
+                    viewmodel.Coche = coche;
+                    DetailsCocheView view = new DetailsCocheView();
+                    view.BindingContext = viewmodel;
+                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                });
+            }
+        }
+
         //public void CargarCoches()
         //{
         //    List<Coche> lista = new List<Coche>

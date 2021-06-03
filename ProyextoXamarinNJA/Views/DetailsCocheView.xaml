@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyextoXamarinNJA.Views.DetailsCocheView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Coche.IdCoche, StringFormat='Id coche: {0}'}"
+                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Coche.Marca, StringFormat='Marca: {0}'}"
+                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Coche.Modelo, StringFormat='Modelo: {0}'}"
+                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Coche.Año, StringFormat='Año: {0}'}"
+                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Coche.Kilometros, StringFormat='Kilómetros: {0}'}"
+                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Coche.Motor, StringFormat='Motor: {0}'}"
+                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
