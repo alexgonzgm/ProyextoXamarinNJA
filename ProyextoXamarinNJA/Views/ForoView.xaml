@@ -4,38 +4,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyextoXamarinNJA.Views.ForoView"
              xmlns:viewmodels="clr-namespace:ProyextoXamarinNJA.ViewModels"
-            xmlns:local="clr-namespace:ProyextoXamarinNJA"
-             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ForoViewmModel}">
+             xmlns:local="clr-namespace:ProyextoXamarinNJA"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=ForoViewmModel}"
+             x:Name="PageForoView">
     <ContentPage.Content>
-
         <StackLayout>
-            
-
-            <Label Text="Foro de la comunidad"
+            <Label Text="Foros de la comunidad"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand"
                    FontSize="20"
                    TextColor="#B4974D" />
-            <ListView ItemsSource="{Binding Foro}"
+            <CollectionView ItemsSource="{Binding Foros}"
+                        SelectionMode="Single" BackgroundColor="#B4974D">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding Marca}" HorizontalOptions="Start"></Image>
+                            <!--<StackLayout Grid.Column="0" BackgroundColor="Violet"/>-->
+                            <Label Grid.Column="1" Text="{Binding Asunto}" FontSize="15" TextColor="Beige"/>
+                            <Label Grid.Column="2" Text="{Binding Modelo}" FontSize="15" TextColor="Beige"/>
+                            <Button Grid.Column="3" Text="ver" HorizontalOptions="End"
+                                        Command="{Binding BindingContext.DetallesForo, Source={x:Reference PageForoView}}"
+                                        CommandParameter="{Binding .}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--<ListView ItemsSource="{Binding Foros}"
                       VerticalOptions="Start" 
                       BackgroundColor="#B4974D" SeparatorColor="Beige" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell >
+                        <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="5,0,0,0">
-                                <Image Source="Reparacion.png" HorizontalOptions="Start"/>
-                                
-                                <Image Source="{Binding Marca}" Margin="0,0,40,0"></Image>
+                                <Image Source="{Binding Marca}" HorizontalOptions="Start"></Image>
                                 <Label Text="{Binding Asunto}" FontSize="15" TextColor="Beige"/>
                                 <Label Text="{Binding Modelo}" FontSize="15" TextColor="Beige"/>
-                                <Button Text="ir al foro" Margin="40,0,0,0"></Button>
-
+                                <Button Text="ir al foro" Margin="40,0,0,0" HorizontalOptions="End"
+                                        Command="{Binding BindingContext.DetallesForo, Source={x:Reference PageForoView}}"
+                                        CommandParameter="{Binding .}"/>
                             </StackLayout>
                            
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

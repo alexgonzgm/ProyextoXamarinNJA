@@ -22,6 +22,7 @@ namespace ProyextoXamarinNJA.Services
             builder.RegisterType<CochesViewModel>();
             builder.RegisterType<CocheViewModel>();
             builder.RegisterType<ForoViewmModel>();
+            builder.RegisterType<ForoViewModel>();
 
             this.container = builder.Build();
         }
@@ -39,6 +40,11 @@ namespace ProyextoXamarinNJA.Services
         public ForoViewmModel ForoViewmModel
         {
             get { return this.container.Resolve<ForoViewmModel>(); }
+        }
+
+        public ForoViewModel ForoViewModel
+        {
+            get { return this.container.Resolve<ForoViewModel>(); }
         }
     }
 }

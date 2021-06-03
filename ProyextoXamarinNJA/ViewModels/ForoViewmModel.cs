@@ -1,6 +1,7 @@
 ﻿using ProyextoXamarinNJA.Base;
 using ProyextoXamarinNJA.Models;
 using ProyextoXamarinNJA.Services;
+using ProyextoXamarinNJA.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,63 +20,37 @@ namespace ProyextoXamarinNJA.ViewModels
             this.serviceCoche = serviceCoche;
             Task.Run(async () =>
             {
-                await this.CargarForoAsync();
+                await this.CargarForosAsync();
 
             });
         }
 
-        private ObservableCollection<Foro> _Foro;
-        public ObservableCollection<Foro> Foro
+        private ObservableCollection<Foro> _Foros;
+        public ObservableCollection<Foro> Foros
         {
-            get { return this._Foro; }
-            set { this._Foro = value; OnPropertyChanged("Foro"); }
+            get { return this._Foros; }
+            set { this._Foros = value; OnPropertyChanged("Foros"); }
         }
 
-        private async Task CargarForoAsync()
+        private async Task CargarForosAsync()
         {
-            this.Foro = new ObservableCollection<Foro>(await this.serviceCoche.GetForoAsync());
+            this.Foros = new ObservableCollection<Foro>(await this.serviceCoche.GetForoAsync());
         }
 
-
-
-        //private List<Foro> CargarForo()
-        //{
-        //    List<Foro> lista = new List<Foro>
-        //    {
-        //        new Foro{IdForo=1 , Asunto="Foro1" , Contenido = "text ever since the 1500s, when an unknown " +
-        //        "printer took a galley of type and scrambled it to make a type specimen book. " +
-        //        "It has survived not only five centuries, but also the leap into electronic typesetting, " +
-        //        "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets conta",
-        //        Marca="Ford.png" , Modelo="Mondeo"},
-        //        new Foro{IdForo=1 , Asunto="Foro1" , Contenido = "text ever since the 1500s, when an unknown " +
-        //        "printer took a galley of type and scrambled it to make a type specimen book. " +
-        //        "It has survived not only five centuries, but also the leap into electronic typesetting, " +
-        //        "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets conta",
-        //        Marca="Ford.png" , Modelo="Mondeo"},
-        //        new Foro{IdForo=1 , Asunto="Foro1" , Contenido = "text ever since the 1500s, when an unknown " +
-        //        "printer took a galley of type and scrambled it to make a type specimen book. " +
-        //        "It has survived not only five centuries, but also the leap into electronic typesetting, " +
-        //        "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets conta",
-        //        Marca="Ford.png" , Modelo="Mondeo"},
-        //        new Foro{IdForo=1 , Asunto="Foro1" , Contenido = "text ever since the 1500s, when an unknown " +
-        //        "printer took a galley of type and scrambled it to make a type specimen book. " +
-        //        "It has survived not only five centuries, but also the leap into electronic typesetting, " +
-        //        "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets conta",
-        //        Marca="Ford.png" , Modelo="Mondeo"},
-        //        new Foro{IdForo=1 , Asunto="Foro1" , Contenido = "text ever since the 1500s, when an unknown " +
-        //        "printer took a galley of type and scrambled it to make a type specimen book. " +
-        //        "It has survived not only five centuries, but also the leap into electronic typesetting, " +
-        //        "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets conta",
-        //        Marca="Ford.png" , Modelo="Mondeo"},
-        //        new Foro{IdForo=1 , Asunto="Foro1" , Contenido = "text ever since the 1500s, when an unknown " +
-        //        "printer took a galley of type and scrambled it to make a type specimen book. " +
-        //        "It has survived not only five centuries, but also the leap into electronic typesetting, " +
-        //        "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets conta",
-        //        Marca="Ford.png" , Modelo="Mondeo"},
-        //    };
-        //    this._Foro = new ObservableCollection<Foro>(lista);
-        //    return lista;
-        //}
-
+        public Command DetallesForo
+        {
+            get
+            {
+                return new Command(async(f) =>
+                {
+                    Foro foro = f as Foro;
+                    ForoViewModel viewmodel = App.ServiceLocator.ForoViewModel;
+                    viewmodel.Foro = foro;
+                    DetailsForoView view = new DetailsForoView();
+                    view.BindingContext = viewmodel;
+                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
+                });
+            }
+        }
     }
 }
