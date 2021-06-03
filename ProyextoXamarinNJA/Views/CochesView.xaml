@@ -26,7 +26,7 @@
                                         <SwipeItem Text="Editar"
                                                    IconImageSource="https://e7.pngegg.com/pngimages/740/67/png-clipart-computer-icons-icon-design-edit-angle-computer.png"
                                                    BackgroundColor="Green"
-                                                   Command="{Binding BindingContext.EditarCoche, Source={x:Reference StackDoctores}}"
+                                                   Command="{Binding BindingContext.EditarCoche, Source={x:Reference PageCochesView}}"
                                                    CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
@@ -41,9 +41,14 @@
                                 </SwipeView.RightItems>
                                 <!--<StackLayout Orientation="Horizontal" HeightRequest="150">-->
                                 <!--<Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50" />-->
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D"/>
+                                <StackLayout Orientation="Horizontal"  >
+                                    <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D" />
                                     <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D"/>
+                                    <Button Text="Detalles" 
+                                            HeightRequest="35"
+                                            TextColor="#B4995D" 
+                                            Clicked="ShowNewCochePopup"
+                                          HorizontalOptions="EndAndExpand"/>           
                                 </StackLayout>
                                 <!--</StackLayout>-->
                             </SwipeView>
