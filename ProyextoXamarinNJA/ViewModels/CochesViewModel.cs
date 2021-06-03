@@ -12,9 +12,9 @@ namespace ProyextoXamarinNJA.ViewModels
 {
     public class CochesViewModel : ViewModelBase
     {
-        private ServiceCoches ServiceCoches;
+        private ServiceCoche ServiceCoches;
 
-        public CochesViewModel(ServiceCoches serviceCoches)
+        public CochesViewModel(ServiceCoche serviceCoches)
         {
             this.ServiceCoches = serviceCoches;
             Task.Run(async () =>
@@ -37,7 +37,7 @@ namespace ProyextoXamarinNJA.ViewModels
 
         private async Task CargarCochesAsync()
         {
-            List<Coche> lista = await this.ServiceCoches.GetCochesAsync(1);
+            List<Coche> lista = await this.serviceCoches.GetCochesAsync(1);
             this.Coches = new ObservableCollection<Coche>(lista);
         }
 

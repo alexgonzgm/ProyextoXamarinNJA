@@ -16,7 +16,7 @@
                     TextColor="#B4995D" 
                     BackgroundColor="White"
                     Clicked="ShowNewCochePopup"/>
-            <ListView ItemsSource="{Binding Coches}">
+            <ListView ItemsSource="{Binding Coches}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -41,9 +41,10 @@
                                 </SwipeView.RightItems>
                                 <!--<StackLayout Orientation="Horizontal" HeightRequest="150">-->
                                 <!--<Image Source="{Binding Imagen}" WidthRequest="50" HeightRequest="50" />-->
-                                <StackLayout Orientation="Horizontal"  >
-                                    <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D" />
-                                    <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D"/>
+                                <StackLayout Orientation="Horizontal" Padding="10,0,10,0" >
+                                    <Image Source="{Binding Marca}" WidthRequest="50"></Image>
+                                    <Label Text="{Binding Marca}" FontSize="35" TextColor="#B4995D" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding Modelo}" FontSize="35" TextColor="#B4995D" HorizontalOptions="StartAndExpand" />
                                     <Button Text="Detalles" 
                                             HeightRequest="35"
                                             TextColor="#B4995D" 
