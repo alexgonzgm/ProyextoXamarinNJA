@@ -49,7 +49,7 @@ namespace ProyextoXamarinNJA.ViewModels
             this.Coches = new ObservableCollection<Coche>(lista);
         }
 
-        public Command MostrarDetalles
+        public Command DetallesCoche
         {
             get
             {
