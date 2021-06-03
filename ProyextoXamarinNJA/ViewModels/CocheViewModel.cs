@@ -1,6 +1,7 @@
 ﻿using ProyextoXamarinNJA.Base;
 using ProyextoXamarinNJA.Models;
 using ProyextoXamarinNJA.Services;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,6 +16,7 @@ namespace ProyextoXamarinNJA.ViewModels
         public CocheViewModel(ServiceCoche serviceCoches)
         {
             this.serviceCoches = serviceCoches;
+            this.Coche = new Coche();
         }
 
         private Coche _Coche;
@@ -74,9 +76,8 @@ namespace ProyextoXamarinNJA.ViewModels
                     this.Coche.Año, this.Coche.Kilometros, this.Coche.Motor , this.Coche.IdUsuario);
                     MessagingCenter.Send
                     (App.ServiceLocator.CochesViewModel, "RELOAD");
-                    await Application.Current.MainPage
-                    .DisplayAlert("Alert", "Departamento insertado"
-                    , "OK");
+                    await PopupNavigation.Instance.PopAsync();
+                    
                 });
             }
         }

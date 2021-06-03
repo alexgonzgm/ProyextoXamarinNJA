@@ -18,14 +18,21 @@ namespace ProyextoXamarinNJA.Services
         private void RegisterDependencies()
         {
             ContainerBuilder builder = new ContainerBuilder();
-            builder.RegisterType<ServiceCoches>();
+            builder.RegisterType<ServiceCoche>();
             builder.RegisterType<CochesViewModel>();
+            builder.RegisterType<CocheViewModel>();
+
             this.container = builder.Build();
         }
 
         public CochesViewModel CochesViewModel
         {
             get { return this.container.Resolve<CochesViewModel>(); }
+        }
+
+        public CocheViewModel CocheViewModel
+        {
+            get { return this.container.Resolve<CocheViewModel>(); }
         }
     }
 }

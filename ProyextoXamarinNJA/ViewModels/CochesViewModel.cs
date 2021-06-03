@@ -1,6 +1,8 @@
 ﻿using ProyextoXamarinNJA.Base;
 using ProyextoXamarinNJA.Models;
 using ProyextoXamarinNJA.Services;
+using ProyextoXamarinNJA.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +24,12 @@ namespace ProyextoXamarinNJA.ViewModels
                 await this.CargarCochesAsync();
             });
             //this.CargarCoches();
+
+            MessagingCenter.Subscribe<CochesViewModel>
+                (this, "RELOAD", async (sender) =>
+                {
+                    await this.CargarCochesAsync();
+                });
         }
 
         private ObservableCollection<Coche> _Coches;
@@ -75,5 +83,17 @@ namespace ProyextoXamarinNJA.ViewModels
                 });
             }
         }
+
+        public Command show
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                  await  PopupNavigation.Instance.PushAsync(new NewCochePopupPage());
+                });
+            }
+        }
     }
 }
+

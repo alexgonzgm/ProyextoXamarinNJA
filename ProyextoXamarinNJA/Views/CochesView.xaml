@@ -15,7 +15,7 @@
                     HeightRequest="35"
                     TextColor="#B4995D" 
                     BackgroundColor="White"
-                    Clicked="ShowNewCochePopup"/>
+                   Command="{Binding show }"></Button>
             <ListView ItemsSource="{Binding Coches}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>

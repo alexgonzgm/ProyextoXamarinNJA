@@ -196,34 +196,47 @@ namespace ProyextoXamarinNJA.Services
         #region Coche
         public async Task<List<Coche>> GetCocheAsync(int idusuario)
         {
-            String request = "api/Coche/GetCoche/" + idusuario;
+            String request = "api/Coches/GetCoches/" + idusuario;
             return await this.CallApi<List<Coche>>(request);
         }
         public async Task<Coche> BuscarCocheAsync(int idcoche)
         {
-            String request = "api/Coche/BuscarCoche/" + idcoche;
+            String request = "api/Coches/BuscarCoche/" + idcoche;
             return await this.CallApi<Coche>(request);
         }
         public async Task EliminarCocheAsync(int idcoche)
         {
-            String request = "api/Coche/EliminarCoche/" + idcoche;
+            String request = "api/Coches/EliminarCoche/" + idcoche;
             await this.DeleteApi(request);
         }
         public async Task InsertarCocheAsync(string marca, string modelo, int año, int kilometros, string motor, int idusuario)
         {
-            String request = "api/Coche/";
-            Coche coche = new Coche();
-            coche.Marca = marca;
-            coche.Modelo = modelo;
-            coche.Año = año;
-            coche.Kilometros = kilometros;
-            coche.Motor = motor;
-            coche.IdUsuario = idusuario;
-            await this.PostApi<Coche>(request, coche);
+            //String request = "api/Coches/";
+            Coche coche = new Coche()
+            {
+                Marca = marca,
+                Modelo = modelo,
+                Año = año,
+                Kilometros = kilometros,
+                Motor = motor,
+                IdUsuario = 1
+            };
+
+            String json = JsonConvert.SerializeObject(coche);
+            StringContent content =
+                new StringContent(json, Encoding.UTF8, "application/json");
+            using (HttpClient client = new HttpClient())
+            {
+                String request = "api/Coches/";
+                Uri uri = new Uri(this.url + request);
+                await this.PostApi<Coche>(request, coche);
+            }
+
+            
         }
         public async Task ModificarCocheAsync(int idcoche, string marca, string modelo, int año, int kilometros, string motor)
         {
-            String request = "api/Coche/ModificarCoche";
+            String request = "api/Coches/ModificarCoche";
             Coche coche = new Coche();
             coche.IdCoche = idcoche;
             coche.Marca = marca;
@@ -237,17 +250,17 @@ namespace ProyextoXamarinNJA.Services
         #region Comentario
         public async Task<List<Comentario>> GetComentarioAsync(int idforo)
         {
-            String request = "api/Foro/GetComentario/" + idforo;
+            String request = "api/Foros/GetComentarios/" + idforo;
             return await this.CallApi<List<Comentario>>(request);
         }
         public async Task<Comentario> BuscarComentarioAsync(int idcomentario)
         {
-            String request = "api/Foro/BuscarComentario/" + idcomentario;
+            String request = "api/Foros/BuscarComentario/" + idcomentario;
             return await this.CallApi<Comentario>(request);
         }
         public async Task InsertarComentarioAsync(int idcomentario, int idusuario, string mensaje, int valoracion, DateTime fecha, int idforo)
         {
-            String request = "api/Foro/InsertarComentario";
+            String request = "api/Foros/InsertarComentario";
             Comentario comentario = new Comentario();
             comentario.IdUsuario = idusuario;
             comentario.Mensaje = mensaje;
@@ -258,7 +271,7 @@ namespace ProyextoXamarinNJA.Services
         }
         public async Task ModificarComentarioAsync(int idcomentario, String mensaje, int valoracion, DateTime fecha)
         {
-            String request = "api/Foro/ModificarComentario";
+            String request = "api/Foros/ModificarComentario";
             Comentario comentario = new Comentario();
             comentario.IdComentario = idcomentario;
             comentario.Mensaje = mensaje;
@@ -268,32 +281,32 @@ namespace ProyextoXamarinNJA.Services
         }
         public async Task EliminarComentarioAsync(int idcomentario)
         {
-            String request = "api/Foro/EliminarComentario/" + idcomentario;
+            String request = "api/Foros/EliminarComentario/" + idcomentario;
             await this.DeleteApi(request);
         }
         #endregion
         #region MantenimientosAverias
         public async Task<List<MantenimientoAveria>> GetMantenimientoAveriaAsync(int idcoche)
         {
-            String request = "api/Coche/GetMantenimientoAveria/" + idcoche;
+            String request = "api/Coches/GetMantenimientoAverias/" + idcoche;
             return await this.CallApi<List<MantenimientoAveria>>(request);
         }
 
         public async Task<MantenimientoAveria> BuscarMantenimientoAveriaAsync(int idmantenimientoaveria)
         {
-            String request = "api/Coche/BuscarMantenimientoAveria/" + idmantenimientoaveria;
+            String request = "api/Coches/BuscarMantenimientoAveria/" + idmantenimientoaveria;
             return await this.CallApi<MantenimientoAveria>(request);
         }
 
         public async Task EliminarMantenimientoAveriaAsync(int idmantenimientoaveria)
         {
-            String request = "api/Coche/EliminarMantenimientoAveria/" + idmantenimientoaveria;
+            String request = "api/Coches/EliminarMantenimientoAveria/" + idmantenimientoaveria;
             await this.DeleteApi(request);
         }
 
         public async Task InsertarMantenimientoAveriaAsync(int tipo, string zona, string logo, DateTime fechamantenimiento, int precio, string observaciones, int idcoche)
         {
-            String request = "api/Coche/InsertarMantenimientoAveria";
+            String request = "api/Coches/InsertarMantenimientoAveria";
             MantenimientoAveria MantenimientoAveria = new MantenimientoAveria();
             MantenimientoAveria.Tipo = tipo;
             MantenimientoAveria.Zona = zona;
@@ -307,7 +320,7 @@ namespace ProyextoXamarinNJA.Services
 
         public async Task ModificarMantenimientoAveriaAsync(int idmantenimientoaveria, int tipo, string zona, string logo, DateTime fechamantenimiento, int precio, string observaciones)
         {
-            String request = "api/Coche/ModificarMantenimientoAveria";
+            String request = "api/Coches/ModificarMantenimientoAveria";
             MantenimientoAveria MantenimientoAveria = new MantenimientoAveria();
             MantenimientoAveria.IdMantenimientoAveria = idmantenimientoaveria;
             MantenimientoAveria.Tipo = tipo;
