@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyextoXamarinNJA.Views.LoginPage">
+             x:Class="ProyextoXamarinNJA.Views.LoginPage"
+             xmlns:viewmodels="clr-namespace:ProyextoXamarinNJA.ViewModels">
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" 
                      HorizontalOptions="CenterAndExpand">
@@ -34,14 +35,14 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="3" HorizontalOptions="Center">
-                    <Label Text="Email" 
+                    <Label Text="Usuario" 
                            TextColor="#767677"
                            FontSize="15"
                            WidthRequest="300"
                            FontAttributes="Bold"/>
                     <Entry WidthRequest="300" HeightRequest="50" 
-                           Placeholder="email@gmail.com"
-                           FontSize="15"
+                           Placeholder="Usuario"
+                           FontSize="15" x:Name="usuario"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                            HorizontalTextAlignment="Start"
@@ -56,7 +57,7 @@
                            FontAttributes="Bold"/>
                     <Entry WidthRequest="300" HeightRequest="50" 
                            Placeholder="*****************"
-                           FontSize="15"
+                           FontSize="15" x:Name="pass"
                            HorizontalOptions="Start"
                            VerticalOptions="Center"
                            IsPassword="True"
@@ -96,13 +97,12 @@
                     <Frame Padding="0,4,0,4" HasShadow="True">
                         <Button Text="Login" HeightRequest="35"
                                 TextColor="#B4995D" BackgroundColor="White"
-                                FontSize="12"
+                                FontSize="12" x:Name="iniciar"
                                 FontAttributes="Bold"/>
 
                     </Frame>
                     <Button Text="New Account" HeightRequest="35"
-                            TextColor="#B4995D" BackgroundColor="White"
-                            />
+                            TextColor="#B4995D" BackgroundColor="White"/>
                 </StackLayout>
 
             </Grid>

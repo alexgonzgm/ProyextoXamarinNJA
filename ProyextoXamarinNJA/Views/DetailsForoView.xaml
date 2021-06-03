@@ -18,7 +18,7 @@
                 <Label FontAttributes="Bold" Text="{Binding Foro.Contenido}"
                    VerticalOptions="Start" FontSize="15" HorizontalOptions="CenterAndExpand" />
             </StackLayout>
-            <Button Grid.Row="1" Text="Añadir comentario" Command="{Binding NuevoComentario}"
+            <Button Grid.Row="1" Text="Añadir comentario" Command="{Binding show}"
                     BackgroundColor="LightBlue" TextColor="Black" Margin="0,0,0,25"/>
             <CollectionView Grid.Row="2" ItemsSource="{Binding Comentarios}"
                         SelectionMode="Single">

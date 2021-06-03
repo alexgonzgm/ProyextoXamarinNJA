@@ -267,11 +267,12 @@ namespace ProyextoXamarinNJA.Services
         {
             String request = "api/Foros/InsertarComentario";
             Comentario comentario = new Comentario();
-            comentario.IdUsuario = idusuario;
+            comentario.IdComentario = 24;
+            comentario.IdUsuario = 1;
             comentario.Mensaje = mensaje;
-            comentario.Valoracion = valoracion;
-            comentario.FechaMensaje = fecha;
-            comentario.IdForo = idforo;
+            comentario.Valoracion = 3;
+            comentario.FechaMensaje = DateTime.Now;
+            comentario.IdForo = 1;
             await this.PostApi<Comentario>(request, comentario);
         }
         public async Task ModificarComentarioAsync(int idcomentario, String mensaje, int valoracion, DateTime fecha)

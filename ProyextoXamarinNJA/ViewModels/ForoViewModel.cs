@@ -1,6 +1,8 @@
 ﻿using ProyextoXamarinNJA.Base;
 using ProyextoXamarinNJA.Models;
 using ProyextoXamarinNJA.Services;
+using ProyextoXamarinNJA.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,11 +19,16 @@ namespace ProyextoXamarinNJA.ViewModels
         {
             this.serviceCoches = serviceCoches;
             this.Foro = new Foro();
+            this.Comentario = new Comentario();
             Task.Run(async () =>
             {
                 await this.CargarComentarios();
             });
             MessagingCenter.Subscribe<CocheViewModel>(this, "RELOAD", async (sender) =>
+            {
+                await this.CargarComentarios();
+            });
+            MessagingCenter.Subscribe<ForoViewModel>(this, "RELOAD", async (sender) =>
             {
                 await this.CargarComentarios();
             });
@@ -44,6 +51,17 @@ namespace ProyextoXamarinNJA.ViewModels
             }
         }
 
+        private Comentario _Comentario;
+        public Comentario Comentario
+        {
+            get { return this._Comentario; }
+            set
+            {
+                this._Comentario = value;
+                OnPropertyChanged("Comentario");
+            }
+        }
+
         private ObservableCollection<Comentario> _Comentarios;
         public ObservableCollection<Comentario> Comentarios
         {
@@ -55,39 +73,29 @@ namespace ProyextoXamarinNJA.ViewModels
             }
         }
 
-        public Command EliminarCoche
+        public Command show
         {
             get
             {
                 return new Command(async () =>
                 {
-                    ////Coche coche = car as Coche;
-                    //await this.serviceCoches.EliminarCocheAsync(this.Coche.IdCoche);
-                    //MessagingCenter.Send(App.ServiceLocator.CochesViewModel, "RELOAD");
-                    //await Application.Current.MainPage.Navigation.PopModalAsync();
-                });
-
-            }
-        }
-
-        public Command ModificarCoche
-        {
-            get
-            {
-                return new Command(async () => {
-                    //await this.serviceCoches.ModificarCocheAsync(this.Coche.IdCoche,
-                    //    this.Coche.Marca, this.Coche.Modelo, this.Coche.Año, this.Coche.Kilometros, this.Coche.Motor);
-                    //MessagingCenter.Send(App.ServiceLocator.CochesViewModel, "RELOAD");
-                    //await Application.Current.MainPage.Navigation.PopModalAsync();
+                    await PopupNavigation.Instance.PushAsync(new NewComentarioPopupPage());
                 });
             }
         }
 
-        public Command Insertarcoche
+        public Command NuevoComentario
         {
             get
             {
                 return new Command(async () => {
+                    await this.serviceCoches.InsertarComentarioAsync(this.Comentario.IdComentario, 1, this.Comentario.Mensaje,
+                        this.Comentario.Valoracion, this.Comentario.FechaMensaje, this.Comentario.IdForo);
+                    MessagingCenter.Send(App.ServiceLocator.ForoViewModel, "RELOAD");
+                    //await Application.Current.MainPage.Navigation.PopModalAsync();
+                    await PopupNavigation.Instance.PopAsync();
+
+
                     //await this.serviceCoches.InsertarCocheAsync
                     //(
                     //this.Coche.Marca
