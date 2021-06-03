@@ -37,7 +37,7 @@ namespace ProyextoXamarinNJA.ViewModels
 
         private async Task CargarCochesAsync()
         {
-            List<Coche> lista = await this.serviceCoches.GetCochesAsync(1);
+            List<Coche> lista = await this.ServiceCoches.GetCocheAsync(1);
             this.Coches = new ObservableCollection<Coche>(lista);
         }
 

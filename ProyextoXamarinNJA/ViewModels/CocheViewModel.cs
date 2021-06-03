@@ -62,7 +62,7 @@ namespace ProyextoXamarinNJA.ViewModels
             }
         }
 
-        public Command InsertarDepartamento
+        public Command Insertarcoche
         {
             get
             {
