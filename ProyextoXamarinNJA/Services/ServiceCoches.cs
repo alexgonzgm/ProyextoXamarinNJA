@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace ProyextoXamarinNJA.Services
 {
-    public class ServiceCoche
+    public class ServiceCoches
     {
         private Uri url;
         private MediaTypeWithQualityHeaderValue header;
         private String api;
-        public ServiceCoche()
+
+        public ServiceCoches()
         {
 
             this.api = "https://apiproyectonja.azurewebsites.net/";
@@ -206,7 +207,12 @@ namespace ProyextoXamarinNJA.Services
         public async Task EliminarCocheAsync(int idcoche)
         {
             String request = "api/Coches/EliminarCoche/" + idcoche;
-            await this.DeleteApi(request);
+            Uri uri = new Uri(this.url + request);
+            using (HttpClient client = new HttpClient())
+            {
+                await client.DeleteAsync(uri);
+            }
+            //await this.DeleteApi(request);
         }
         public async Task InsertarCocheAsync(string marca, string modelo, int año, int kilometros, string motor, int idusuario)
         {

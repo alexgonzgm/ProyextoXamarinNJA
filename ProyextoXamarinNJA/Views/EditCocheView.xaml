@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyextoXamarinNJA.Views.EditCocheView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Edición" FontSize="50" TextColor="Black"/>
+            <Label Text="Id coche" HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Coche.IdCoche}" IsReadOnly="true"/>
+            <Label Text="Marca" HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Coche.Marca}" Placeholder="Marca"/>
+            <Label Text="Modelo" HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Coche.Modelo}" Placeholder="Modelo"/>
+            <Label Text="Año" HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Coche.Año}" Placeholder="Año"/>
+            <Label Text="Kilómetros" HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Coche.Kilometros}" Placeholder="Kilómetros"/>
+            <Label Text="Motor" HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Coche.Motor}" Placeholder="Motor"/>
+            <Button Text="Guardar cambios" Command="{Binding ModificarCoche}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

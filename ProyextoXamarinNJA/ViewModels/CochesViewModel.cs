@@ -14,9 +14,9 @@ namespace ProyextoXamarinNJA.ViewModels
 {
     public class CochesViewModel : ViewModelBase
     {
-        private ServiceCoche ServiceCoches;
+        private ServiceCoches ServiceCoches;
 
-        public CochesViewModel(ServiceCoche serviceCoches)
+        public CochesViewModel(ServiceCoches serviceCoches)
         {
             this.ServiceCoches = serviceCoches;
             Task.Run(async () =>
@@ -83,33 +83,17 @@ namespace ProyextoXamarinNJA.ViewModels
         {
             get
             {
-                return new Command(async () =>
+                return new Command(async (car) =>
                 {
-                    await Application.Current.MainPage.DisplayAlert("Alert", "Has pulsado en editar", "OK");
+                    Coche coche = car as Coche;
+                    CocheViewModel viewmodel = App.ServiceLocator.CocheViewModel;
+                    viewmodel.Coche = coche;
+                    EditCocheView view = new EditCocheView();
+                    view.BindingContext = viewmodel;
+                    await Application.Current.MainPage.Navigation.PushModalAsync(view);
                 });
             }
         }
-        public Command EliminarCoche
-        {
-            get
-            {
-
-                return new Command(async (coche) =>
-                {
-                    Coche car = coche as Coche;
-
-                    await
-                    this.ServiceCoches.EliminarCocheAsync
-                    (car.IdCoche);
-                    MessagingCenter.Send
-                    (App.ServiceLocator.CochesViewModel, "RELOAD");
-                    await Application.Current.MainPage
-                    .Navigation.PopModalAsync();
-                });
-
-            }
-        }
-
 
         public Command show
         {

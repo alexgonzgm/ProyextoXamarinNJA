@@ -5,18 +5,40 @@
              x:Name="PageDetailsCocheView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Coche.IdCoche, StringFormat='Id coche: {0}'}"
+            <Image Source="{Binding Coche.Marca}" HeightRequest="100" WidthRequest="200"/>
+            <!--<Label FontAttributes="Bold" Text="{Binding Coche.Marca, StringFormat='Marca: {0}'}"
+                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />-->
+            <Label FontAttributes="Bold" Text="{Binding Coche.Modelo, StringFormat='Modelo: {0}'}"
                    VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Coche.Marca, StringFormat='Marca: {0}'}"
+            <Label FontAttributes="Bold" Text="{Binding Coche.Año, StringFormat='Año: {0}'}"
                    VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Coche.Modelo, StringFormat='Modelo: {0}'}"
+            <Label FontAttributes="Bold" Text="{Binding Coche.Kilometros, StringFormat='Kilómetros: {0}'}"
                    VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Coche.Año, StringFormat='Año: {0}'}"
+            <Label FontAttributes="Bold" Text="{Binding Coche.Motor, StringFormat='Motor: {0}'}"
                    VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Coche.Kilometros, StringFormat='Kilómetros: {0}'}"
-                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Coche.Motor, StringFormat='Motor: {0}'}"
-                   VerticalOptions="Start" FontSize="25" HorizontalOptions="CenterAndExpand" />
+            <Button Margin="0,15,0,15" Text="Eliminar coche" Command="{Binding EliminarCoche}"
+                    BackgroundColor="Red" TextColor="White"/>
+            <CarouselView ItemsSource="{Binding MantenimientoAverias}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate >
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                            <StackLayout Padding="5,0,0,0" Orientation="Vertical" Margin="100, 0, 0, 0">
+                                <Label Text="{Binding Zona}" FontAttributes="Bold" 
+                                       FontSize="30" VerticalOptions="Start"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Image Source="{Binding Logo}" WidthRequest="100" HeightRequest="100"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand"
+                                             HorizontalOptions="CenterAndExpand">
+                                    <Label FontSize="20" Text="{Binding PrecioMantenimiento, StringFormat='{0} $'}"/>
+                                    <Label FontSize="20" Text="{Binding FechaMantenimiento}" />
+                                    <Label FontSize="20" Text="{Binding ObservacionesMantenimiento}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -12,9 +12,9 @@ namespace ProyextoXamarinNJA.ViewModels
 {
     public class ForoViewmModel : ViewModelBase
     {
-         ServiceCoche serviceCoche;
+         ServiceCoches serviceCoche;
 
-        public ForoViewmModel(ServiceCoche serviceCoche)
+        public ForoViewmModel(ServiceCoches serviceCoche)
         {
             this.serviceCoche = serviceCoche;
             Task.Run(async () =>

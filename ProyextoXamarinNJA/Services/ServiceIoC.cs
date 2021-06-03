@@ -18,7 +18,7 @@ namespace ProyextoXamarinNJA.Services
         private void RegisterDependencies()
         {
             ContainerBuilder builder = new ContainerBuilder();
-            builder.RegisterType<ServiceCoche>();
+            builder.RegisterType<ServiceCoches>();
             builder.RegisterType<CochesViewModel>();
             builder.RegisterType<CocheViewModel>();
             builder.RegisterType<ForoViewmModel>();
